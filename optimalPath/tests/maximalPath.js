@@ -15,7 +15,7 @@ lab.experiment('Optimal Path', () => {
         b: 2,
         c: 2
       };
-      
+
       const edgesMap = {
         a: ['b', 'c'],
         b: ['a'],
@@ -38,7 +38,7 @@ lab.experiment('Optimal Path', () => {
         b: 1,
         c: 1
       };
-      
+
       const edgesMap = {
         a: [],
         b: [],
@@ -61,7 +61,7 @@ lab.experiment('Optimal Path', () => {
         b: 10,
         c: 1
       };
-      
+
       const edgesMap = {
         a: [],
         b: ['a'],
@@ -84,7 +84,7 @@ lab.experiment('Optimal Path', () => {
         b: 2,
         c: 3
       };
-      
+
       const edgesMap = {
         a: ['c'],
         b: ['a'],

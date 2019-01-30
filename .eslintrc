@@ -21,6 +21,12 @@
       "no-unneeded-ternary": 2,
       "keyword-spacing": 2,
       "no-useless-rename": 2,
+      "no-underscore-dangle": 0,
+      "no-param-reassign": 0,
+      "no-restricted-syntax": 0,
+      "no-return-assign": 0,
+      "no-extra-boolean-cast": 0,
+      "guard-for-in": 0,
       "no-multiple-empty-lines": ["error", { "max": 1 }],
       "max-len": [2, {"code": 120, "ignoreStrings": true, "ignoreComments": true, "ignoreRegExpLiterals": true}]
     }
