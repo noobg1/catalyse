@@ -62,9 +62,6 @@ const deserialize = (serializedText) => {
     } else if (key && isKeyTrace) {
       // case for key tracking
       key += presentCharacter;
-    } else if (!isKeyTrace) {
-      // case for value tracking when
-      value += presentCharacter;
     }
   }
   return arrayList;
