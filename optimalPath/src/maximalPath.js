@@ -26,15 +26,19 @@ const _DFSTraversal = (startNode, visitedMap, edgesMap, weightsMap, path) => {
   }
 };
 
-const findMaximalPath = (startNode, weightsMap, edgesMap) => {
+// check if Valid input
+const _isValidInput = (startNode, nodesList, edgesMap) => startNode && nodesList.length && Object.keys(edgesMap).length;
 
-  // Mark all nodes as not visited
+const findMaximalPath = (startNode, weightsMap, edgesMap) => {
   const visitedMap = {};
   const nodesList = Object.keys(weightsMap);
-  if (!startNode || !nodesList.length || !Object.keys(edgesMap).length) {
+
+  // checked input validity
+  if (!_isValidInput(startNode, nodesList, edgesMap)) {
     return '';
   }
 
+  // Mark all nodes as not visited
   nodesList.forEach(vertexKey => visitedMap[vertexKey] = false);
 
   // Track path

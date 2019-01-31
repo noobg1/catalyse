@@ -83,5 +83,25 @@ lab.experiment('Deserialize', () => {
       expect(result).to.eqls(expected);
       done();
     });
+
+    lab.it('should return build the map', (done) => {
+      const text = 'verylongkey=\n';
+      const expected = [{ verylongkey: '' }];
+      const result = deserialize(text);
+      expect(result).to.eqls(expected);
+      done();
+    });
+
+    lab.it('should return build the map', (done) => {
+      const text = 'aa=bb;cc=dd;ee=ff\ngg=hh;\nii=jj;kk=ll\nmm=nn;oo=pp\n';
+      const expected = [
+        { aa: 'bb', cc: 'dd', ee: 'ff' },
+        { gg: 'hh', '\nii': 'jj', kk: 'll' },
+        { mm: 'nn', oo: 'pp' }
+      ];
+      const result = deserialize(text);
+      expect(result).to.eqls(expected);
+      done();
+    });
   });
 });

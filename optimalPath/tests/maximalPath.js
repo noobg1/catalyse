@@ -180,5 +180,46 @@ lab.experiment('Optimal Path', () => {
       expect(result).to.eqls(expected.path);
       done();
     });
+
+    lab.it('should return a if edgeMap points to non existant node', (done) => {
+      const weightsMap = {
+        x: 1,
+        y: 2,
+        z: 3
+      };
+
+      const edgesMap = {
+        x: ['a']
+      };
+      const startVertex = 'x';
+      const expected = {
+        path: 'x',
+        totalWeight: 1
+      };
+      const result = findMaximalPath(startVertex, weightsMap, edgesMap);
+      expect(result.path).to.eqls(expected.path);
+      expect(result.totalWeight).to.eqls(expected.totalWeight);
+      done();
+    });
+
+    lab.it('should return empty if startVertex is empty', (done) => {
+      const weightsMap = {
+        x: 1,
+        y: 2,
+        z: 3
+      };
+
+      const edgesMap = {
+        x: ['a']
+      };
+      const startVertex = '';
+      const expected = {
+        path: '',
+        totalWeight: undefined
+      };
+      const result = findMaximalPath(startVertex, weightsMap, edgesMap);
+      expect(result).to.eqls(expected.path);
+      done();
+    });
   });
 });

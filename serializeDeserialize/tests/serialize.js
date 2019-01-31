@@ -1,6 +1,7 @@
 const Lab = require('lab');
 const Chai = require('chai');
 const { serialize } = require('../src/serialize');
+const { deserialize } = require('../src/deserialize');
 
 exports.lab = Lab.script();
 const { lab } = exports;
@@ -63,6 +64,33 @@ lab.experiment('Serialize', () => {
       ];
       const result = serialize(input);
       expect(result).to.eqls(expected);
+      done();
+    });
+
+    lab.it('should return the right text', (done) => {
+      const expected = 'aa=bb;cc=dd;ee=ff\ngg=hh;\nii=jj;kk=ll\nmm=nn;oo=pp\n';
+      const input = [
+        { aa: 'bb', cc: 'dd', ee: 'ff' },
+        { gg: 'hh', '\nii': 'jj', kk: 'll' },
+        { mm: 'nn', oo: 'pp' }
+      ];
+      const result = serialize(input);
+      expect(result).to.eqls(expected);
+      done();
+    });
+
+    lab.it('should return build the map', (done) => {
+      const expected = 'verylongkey=\n';
+      const input = [{ verylongkey: '' }];
+      const result = serialize(input);
+      expect(result).to.eqls(expected);
+      done();
+    });
+
+    lab.it('should return build the map', (done) => {
+      const input = 'vue=light;angular=mature;react=trust\nhapi=mature;express=quick\n';
+      const result = deserialize(input);
+      expect(serialize(result)).to.eqls(input);
       done();
     });
   });

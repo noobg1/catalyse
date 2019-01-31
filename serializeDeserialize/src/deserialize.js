@@ -24,11 +24,13 @@ const deserialize = (serializedText) => {
 
     if (DELIMITTER_MAP[presentCharacter] && previousCharacter === presentCharacter) {
       // if current character is either of \n, ;, = and same as previous character
+
       if (key && !value) value += presentCharacter;
       else if (key && value) value += presentCharacter;
       else if (key) key += presentCharacter;
     } else if (presentCharacter === DELIMITTER_MAP_ALIAS.NEXT_ARRAY && previousCharacter !== presentCharacter) {
       // case for carriage return
+
       map[key] = value;
       arrayList.push(map);
       map = {};
@@ -38,9 +40,11 @@ const deserialize = (serializedText) => {
       isKeyTrace = true;
     } else if (presentCharacter === DELIMITTER_MAP_ALIAS.KEY_VAL_SEPERATOR) {
       // case for "="
+
       isKeyTrace = false;
     } else if (presentCharacter === DELIMITTER_MAP_ALIAS.MAP_SEPERATOR) {
       // case for ";"
+
       isKeyTrace = true;
       map[key] = value;
       key = serializedText[interator + 1];
@@ -48,9 +52,11 @@ const deserialize = (serializedText) => {
       interator += 1;
     } else if (key && !isKeyTrace) {
       // case for value tracking
+
       value += presentCharacter;
     } else if (key && isKeyTrace) {
       // case for key tracking
+
       key += presentCharacter;
     }
   }
