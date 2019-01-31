@@ -100,5 +100,69 @@ lab.experiment('Optimal Path', () => {
       expect(result.totalWeight).to.eqls(expected.totalWeight);
       done();
     });
+
+    lab.it('should return c->b->a-d for given input with cycle on node d', (done) => {
+      const weightsMap = {
+        a: 1,
+        b: 2,
+        c: 3,
+        d: 4
+      };
+
+      const edgesMap = {
+        a: ['c', 'd'],
+        b: ['a'],
+        c: ['b'],
+        d: ['d']
+      };
+      const startVertex = 'c';
+      const expected = {
+        path: 'c->b->a->d',
+        totalWeight: 10
+      };
+      const result = findMaximalPath(startVertex, weightsMap, edgesMap);
+      expect(result.path).to.eqls(expected.path);
+      expect(result.totalWeight).to.eqls(expected.totalWeight);
+      done();
+    });
+
+    lab.it('should return a for given many cyclic inputs to a', (done) => {
+      const weightsMap = {
+        a: 100
+      };
+
+      const edgesMap = {
+        a: ['a', 'a', 'a', 'a']
+      };
+      const startVertex = 'a';
+      const expected = {
+        path: 'a',
+        totalWeight: 100
+      };
+      const result = findMaximalPath(startVertex, weightsMap, edgesMap);
+      expect(result.path).to.eqls(expected.path);
+      expect(result.totalWeight).to.eqls(expected.totalWeight);
+      done();
+    });
+
+    lab.it('should return empty if start node does not exist', (done) => {
+      const weightsMap = {
+        a: 10,
+        b: 50
+      };
+
+      const edgesMap = {
+        a: ['b']
+      };
+      const startVertex = 'c';
+      const expected = {
+        path: '',
+        totalWeight: 0
+      };
+      const result = findMaximalPath(startVertex, weightsMap, edgesMap);
+      expect(result.path).to.eqls(expected.path);
+      expect(result.totalWeight).to.eqls(expected.totalWeight);
+      done();
+    });
   });
 });

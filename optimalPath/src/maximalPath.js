@@ -9,17 +9,19 @@ const _DFSTraversal = (startNode, visitedMap, edgesMap, weightsMap, path) => {
   // Mark start node as visted
   visitedMap[startNode] = true;
 
-  // Track path
-  path.push(startNode);
-
   const adjacentNodes = edgesMap[startNode];
 
-  // Traverse linking nodes
-  for (const node of adjacentNodes) {
-    if (!visitedMap[node]) {
-      // If node visited then continue DFS
-      const unvisitedNode = node;
-      _DFSTraversal(unvisitedNode, visitedMap, edgesMap, weightsMap, path);
+  if (adjacentNodes) {
+    // Track path
+    path.push(startNode);
+
+    // Traverse linking nodes
+    for (const node of adjacentNodes) {
+      if (!visitedMap[node]) {
+        // If node visited then continue DFS
+        const unvisitedNode = node;
+        _DFSTraversal(unvisitedNode, visitedMap, edgesMap, weightsMap, path);
+      }
     }
   }
 };
