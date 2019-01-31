@@ -55,5 +55,15 @@ lab.experiment('Serialize', () => {
       expect(result).to.eqls(expected);
       done();
     });
+
+    lab.it('should return the right text', (done) => {
+      const expected = '';
+      const input = [
+        { }
+      ];
+      const result = serialize(input);
+      expect(result).to.eqls(expected);
+      done();
+    });
   });
 });

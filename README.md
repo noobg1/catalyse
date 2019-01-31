@@ -50,7 +50,7 @@ where V = vertices \n
 
 ## Usage
 
-## P.S Assumption: There is atleast one character of key or value
+## P.S Assumption: There is atleast one character of key or value if it exists
 
 Serialize (Store)
 ```
