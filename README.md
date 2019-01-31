@@ -51,7 +51,7 @@ where,
 
 ## Usage
 
-## P.S Assumption: There is atleast one character of key or value if it exists
+P.S: Assumption; There exists atleast one character of key or value on existence
 
 Serialize (Store)
 ```
