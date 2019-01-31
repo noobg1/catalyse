@@ -4,7 +4,7 @@
   "description": "FInd optimal path",
   "main": "null",
   "scripts": {
-    "test": "DEBUG=true lab -v ./optimalPath/*"
+    "test": "DEBUG=true lab -v ./serializeDeserialize ./optimalPath"
   },
   "author": "",
   "license": "ISC",
