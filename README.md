@@ -39,14 +39,15 @@ const result = findMaximalPath(startVertex, weightsMap, edgesMap);
 
 ## Complexity analysis
 
-1. Time complexity => O(V + E)
-2. Space complexity => O(3V + E) => => O(V + E) => O(d) for connected graph
+1. Time complexity => O(v + e)
+2. Space complexity => O(ke + e) => => O(v + e) => O(d) for connected graph
 
 ```
 where, 
-    V = vertices
-    E = Edges
+    v = vertices
+    e = Edges
     d = depth
+    k = constant
 ```
 # Serialize/Deserialize
 
@@ -72,12 +73,12 @@ const result = serialize(input);
 ```
 ## Complexity analysis Serialize
 
-1. Time complexity => O(L * nM)
+1. Time complexity => O(l * m)
 2. Space complexity => O(1) => inplace
 
 ```
-where L = Length of array
-      nM = number of hash maps
+where l = Length of array
+      m = number of hash maps
 ```    
 
 Deserialize (load) 
@@ -92,10 +93,13 @@ const result = deserialize(text);
 
 ## Complexity analysis Deserialize
 
-1. Time complexity => O(L)
-2. Space complexity => O(nKV)
+1. Time complexity => O(l)
+2. Space complexity => O(n * (k + v)) => O(np)
 
 ```
-where L = Length of text 
-      nKV = number of key-value pairs
+where l = Length of text 
+      n = number of key-value pairs
+      k = Length of key
+      v = length of value
+      np = number of key-value pairs
 ```
