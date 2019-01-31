@@ -1,14 +1,4 @@
-const delimitters = {
-  '=': '=',
-  ';': ';',
-  '\n': '\n'
-};
-
-const delimittersMap = {
-  NEXT_ARRAY: '\n',
-  KEY_VAL_SEPERATOR: '=',
-  MAP_SEPERATOR: ';'
-};
+const { DELIMITTER_MAP, DELIMITTER_MAP_ALIAS } = require('./constants/common');
 
 const deserialize = (serializedText) => {
   let map = {};
@@ -32,12 +22,12 @@ const deserialize = (serializedText) => {
     const presentCharacter = serializedText[interator];
     const previousCharacter = serializedText[interator - 1];
 
-    if (delimitters[presentCharacter] && previousCharacter === presentCharacter) {
+    if (DELIMITTER_MAP[presentCharacter] && previousCharacter === presentCharacter) {
       // if current character is either of \n, ;, = and same as previous character
       if (key && !value) value += presentCharacter;
       else if (key && value) value += presentCharacter;
       else if (key) key += presentCharacter;
-    } else if (presentCharacter === delimittersMap.NEXT_ARRAY && previousCharacter !== presentCharacter) {
+    } else if (presentCharacter === DELIMITTER_MAP_ALIAS.NEXT_ARRAY && previousCharacter !== presentCharacter) {
       // case for carriage return
       map[key] = value;
       arrayList.push(map);
@@ -46,10 +36,10 @@ const deserialize = (serializedText) => {
       value = '';
       interator += 1;
       isKeyTrace = true;
-    } else if (presentCharacter === delimittersMap.KEY_VAL_SEPERATOR) {
+    } else if (presentCharacter === DELIMITTER_MAP_ALIAS.KEY_VAL_SEPERATOR) {
       // case for "="
       isKeyTrace = false;
-    } else if (presentCharacter === delimittersMap.MAP_SEPERATOR) {
+    } else if (presentCharacter === DELIMITTER_MAP_ALIAS.MAP_SEPERATOR) {
       // case for ";"
       isKeyTrace = true;
       map[key] = value;
