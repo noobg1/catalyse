@@ -4,7 +4,7 @@
 node@v8
 ```
 
-##  Install test runner dependencies
+##  Install test runner dependencies from project root
 ```
 npm i
 ```
@@ -42,11 +42,12 @@ const result = findMaximalPath(startVertex, weightsMap, edgesMap);
 1. Time complexity => O(V + E)
 2. Space complexity => O(3V + E) => => O(V + E) => O(d) for connected graph
 
-where V = vertices \n
-      E = Edges \n
-      d = depth \n
+where,
+     V = vertices
+     E = Edges
+     d = depth
 
-# Serialize Deserialize
+# Serialize/Deserialize
 
 ## Usage
 
@@ -73,7 +74,7 @@ const result = serialize(input);
 1. Time complexity => O(L * nM)
 2. Space complexity => O(1) => inplace
 
-where L = Length of array \n
+where L = Length of array
       nM = number of hash maps \n
       
 
@@ -92,5 +93,5 @@ const result = deserialize(text);
 1. Time complexity => O(L)
 2. Space complexity => O(nKV)
 
-where L = Length of text \n
+where L = Length of text 
       nKV = number of key-value pairs
