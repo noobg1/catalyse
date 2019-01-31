@@ -85,7 +85,7 @@ Deserialize (load)
 ```
 const { deserialize } = require('../src/deserialize');
 
-const text = '1=2;3=4;5=6;7=8\n1=2;3=4;5=6;7=8';
+const text = 'key1=value1;key2=value2\nkeyA=valueA\n';
       
 const result = deserialize(text);
 
