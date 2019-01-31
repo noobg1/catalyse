@@ -164,5 +164,21 @@ lab.experiment('Optimal Path', () => {
       expect(result.totalWeight).to.eqls(expected.totalWeight);
       done();
     });
+
+    lab.it('should return empty if weightsMap is empty', (done) => {
+      const weightsMap = {};
+
+      const edgesMap = {
+        a: ['b']
+      };
+      const startVertex = 'a';
+      const expected = {
+        path: '',
+        totalWeight: 0
+      };
+      const result = findMaximalPath(startVertex, weightsMap, edgesMap);
+      expect(result).to.eqls(expected.path);
+      done();
+    });
   });
 });

@@ -4,7 +4,7 @@ const _calculateWeight = (weightsMap, visitedMap) => { // eslint no-underscore-d
   const reducer = (accumulator, weightKey) => accumulator + (visitedMap[weightKey] ? weightsMap[weightKey] : 0);
   return Object.keys(weightsMap).reduce(reducer, 0);
 };
-// TODO 0 input
+
 const _DFSTraversal = (startNode, visitedMap, edgesMap, weightsMap, path) => {
   // Mark start node as visted
   visitedMap[startNode] = true;
@@ -27,9 +27,14 @@ const _DFSTraversal = (startNode, visitedMap, edgesMap, weightsMap, path) => {
 };
 
 const findMaximalPath = (startNode, weightsMap, edgesMap) => {
+
   // Mark all nodes as not visited
   const visitedMap = {};
   const nodesList = Object.keys(weightsMap);
+  if (!startNode || !nodesList.length || !Object.keys(edgesMap).length) {
+    return '';
+  }
+
   nodesList.forEach(vertexKey => visitedMap[vertexKey] = false);
 
   // Track path
