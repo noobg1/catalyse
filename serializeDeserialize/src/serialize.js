@@ -3,8 +3,8 @@ const serialize = (arrayOfMaps) => {
     for (const key in map) {
       accumulator += `${key}=${map[key]};`;
     }
-    const strippedAccumulator = accumulator.slice(0, -1);
-    return `${strippedAccumulator}\n`;
+
+    return `${accumulator.replace(/.$/, '\n')}`; // replace last character with \n
   };
   return arrayOfMaps.reduce(reducer, '');
 };
