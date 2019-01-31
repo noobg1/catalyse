@@ -67,5 +67,21 @@ lab.experiment('Deserialize', () => {
       expect(result).to.eqls(expected);
       done();
     });
+
+    lab.it('should return build the map', (done) => {
+      const text = '\n';
+      const expected = [];
+      const result = deserialize(text);
+      expect(result).to.eqls(expected);
+      done();
+    });
+
+    lab.it('should return build the map', (done) => {
+      const text = ';';
+      const expected = [{ ';': '' }];
+      const result = deserialize(text);
+      expect(result).to.eqls(expected);
+      done();
+    });
   });
 });

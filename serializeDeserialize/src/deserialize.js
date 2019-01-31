@@ -42,23 +42,28 @@ const deserialize = (serializedText) => {
       map[key] = value;
       arrayList.push(map);
       map = {};
-      key = interator === serializedText.length ? '' : serializedText[interator + 1];
+      key = interator === serializedTextLength ? '' : serializedText[interator + 1];
       value = '';
       interator += 1;
       isKeyTrace = true;
     } else if (presentCharacter === delimittersMap.KEY_VAL_SEPERATOR) {
+      // case for "="
       isKeyTrace = false;
     } else if (presentCharacter === delimittersMap.MAP_SEPERATOR) {
+      // case for ";"
       isKeyTrace = true;
       map[key] = value;
       key = serializedText[interator + 1];
       value = '';
       interator += 1;
     } else if (key && !isKeyTrace) {
+      // case for value tracking
       value += presentCharacter;
     } else if (key && isKeyTrace) {
+      // case for key tracking
       key += presentCharacter;
     } else if (!isKeyTrace) {
+      // case for value tracking when
       value += presentCharacter;
     }
   }

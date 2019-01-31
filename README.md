@@ -50,6 +50,8 @@ where V = vertices \n
 
 ## Usage
 
+## P.S Assumption: There is atleast one character of key or value
+
 Serialize (Store)
 ```
 const { serialize } = require('./serializeDeserialize/src/serialize');
