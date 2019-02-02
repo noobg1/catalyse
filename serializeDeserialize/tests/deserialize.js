@@ -10,6 +10,22 @@ const { expect } = Chai;
 
 lab.experiment('Deserialize', () => {
   lab.describe('function', () => {
+    lab.it('should return the right text', (done) => {
+      const input = '😀=👋;👻=🍧🥮🍜\n👨‍🏫👩‍🏫🌏=🍈🍑🍑🍍🍍🍍🍍\n';
+      const expected = [
+        {
+          '😀': '👋',
+          '👻': '🍧🥮🍜'
+        },
+        {
+          '👨‍🏫👩‍🏫🌏': '🍈🍑🍑🍍🍍🍍🍍'
+        }
+      ];
+      const result = deserialize(input);
+      expect(result).to.eqls(expected);
+      done();
+    });
+
     lab.it('should build the map', (done) => {
       const text = 'key1=value1;key2=value2\nkeyA=valueA\n';
       const expected = [

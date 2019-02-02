@@ -10,6 +10,22 @@ const { expect } = Chai;
 lab.experiment('Serialize', () => {
   lab.describe('function', () => {
     lab.it('should return the right text', (done) => {
+      const expected = '😀=👋;👻=🍧🥮🍜\n👨‍🏫👩‍🏫🌏=🍈🍑🍑🍍🍍🍍🍍\n';
+      const input = [
+        {
+          '😀': '👋',
+          '👻': '🍧🥮🍜'
+        },
+        {
+          '👨‍🏫👩‍🏫🌏': '🍈🍑🍑🍍🍍🍍🍍'
+        }
+      ];
+      const result = serialize(input);
+      expect(result).to.eqls(expected);
+      done();
+    });
+
+    lab.it('should return the right text', (done) => {
       const expected = 'key1=value1;key2=value2\nkeyA=valueA\n';
       const input = [
         {
@@ -122,7 +138,6 @@ lab.experiment('Serialize', () => {
         }
       ];
       const result = serialize(input);
-      console.log(JSON.stringify(result, null, 2));
       expect(result).to.eqls(expected);
       done();
     });
